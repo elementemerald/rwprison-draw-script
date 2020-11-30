@@ -11,7 +11,7 @@ local plr = game:GetService("Players").LocalPlayer;
 local cam = workspace.CurrentCamera;
 local Mouse = game.Players.LocalPlayer:GetMouse();
 
-plr.PlayerGui.GUI.roleChoose:Destroy();
+if type(plr.PlayerGui.GUI.roleChoose) ~= "nil" then plr.PlayerGui.GUI.roleChoose:Destroy(); end;
 
 -- Get mouse hit position
 function getmousep(X, Y)
