@@ -62,3 +62,5 @@ local mainDraw = coroutine.wrap(function()
     end;
     until not shared.enabled;
 end);
+
+mainDraw();
