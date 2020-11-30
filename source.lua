@@ -24,6 +24,11 @@ end
 mhits = {};
 local hit = false;
 local hitpos;
+local fireconfig = {};
+for i,v in pairs(shared.drawconfig) do
+fireconfig[i] = v;
+end;
+
 -- store mouse.hit cframes and remove them when table is too big
 
 local function clearallhits()
@@ -85,11 +90,14 @@ local mainDraw = coroutine.wrap(function()
             {
                 --["CFrame"] = CFrame.new(55, 0.5, -382, 0, 1, 0, 0, 0, -1, -1, 0, 0),
                 ["CFrame"] = CFrame.new(v),
-                ["BrickColor"] = BrickColor.new("Bright green"),
-                ["CanCollide"] = false,
+                --["BrickColor"] = BrickColor.new("Bright green"),
+		["BrickColor"] = fireconfig.color,
+                --["CanCollide"] = false,
+		["CanCollide"] = fireconfig.collide,
                 ["Parent"] = game:GetService("Workspace"),
                 ["Material"] = "Neon",
-                ["Shape"] = Enum.PartType.Block,
+                --["Shape"] = Enum.PartType.Block,
+		["Shape"] = fireconfig.shape,
                 ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
             }
         );
