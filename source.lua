@@ -58,7 +58,7 @@ local mainDraw = coroutine.wrap(function()
                 ["Parent"] = game:GetService("Workspace"),
                 ["Material"] = "Neon",
                 ["Shape"] = Enum.PartType.Block,
-                ["Size"] = Vector3.new(5, 5, 5)
+                ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
             }
         );
     end;
