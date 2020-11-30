@@ -42,6 +42,7 @@ UIS.InputBegan:connect(function(i)
         end;]]
 	hit = true;
 	hitpos = getmousep(i.Position.X, i.Position.Y);
+	table.insert(mhits, hitpos);
     end
 end);
 
@@ -52,10 +53,17 @@ UIS.InputEnded:connect(function(i)
     end
 end);
 
+UIS.InputChanged:connect(function(i)
+    local itype = i.UserInputType;
+    if itype == Enum.UserInputType.MouseMovement and isrbxactive() then
+	hitpos = getmousep(i.Position.X, i.Position.Y);
+	table.insert(mhits, hitpos);
+    end;
+end);
+
 -- this might cause lag issues while drawing
 local mainDraw = coroutine.wrap(function()
     repeat wait();
-    if hit then table.insert(mhits, hitpos); end;
     for i,v in pairs(mhits) do
         game:GetService("Workspace").resources.RemoteEvent:FireServer(
             "FireAllClients",
