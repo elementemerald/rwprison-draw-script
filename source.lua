@@ -8,9 +8,14 @@ if shared.bsize == nil then return error("Block size for drawing has not been de
 
 local UIS = game:GetService("UserInputService");
 local plr = game:GetService("Players").LocalPlayer;
-plr.PlayerGui.GUI.roleChoose:Destroy();
 local cam = workspace.CurrentCamera;
 local Mouse = game.Players.LocalPlayer:GetMouse();
+
+while wait(2) do
+if plr.PlayerGui.GUI.roleChoose ~= nil then
+plr.PlayerGui.GUI.roleChoose:Destroy();
+end;
+end;
 
 -- Get mouse hit position
 function getmousep(X, Y)
