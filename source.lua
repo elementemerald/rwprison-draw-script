@@ -23,18 +23,18 @@ end
 mhits = {};
 local hit = false;
 local hitpos;
--- store mouse.hit cframes and remove them when table is too big (deprecated atm)
+-- store mouse.hit cframes and remove them when table is too big
 
 UIS.InputBegan:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
-        --[[if #mhits >= 50 then
+        if #mhits >= 50 then
             for k in pairs(mhits) do
                 mhits[k] = nil;
             end;
             print("all hits cleared");
         end;
-        local pos = getmousep(i.Position.X, i.Position.Y);
+        --[[local pos = getmousep(i.Position.X, i.Position.Y);
         table.insert(mhits, pos);
         print("hit inserted");
         for i,v in pairs(mhits) do
