@@ -39,7 +39,7 @@ UIS.InputBegan:connect(function(i)
     end
 end);
 
--- this fires every frame so this might cause lag issues while drawing
+-- this might cause lag issues while drawing
 local mainDraw = coroutine.wrap(function()
     repeat wait();
     for i,v in pairs(mhits) do
