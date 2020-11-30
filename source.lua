@@ -21,12 +21,14 @@ function getmousep(X, Y)
 end
 
 mhits = {};
--- store mouse.hit cframes and remove them when table is too big
+local hit = false;
+local hitpos;
+-- store mouse.hit cframes and remove them when table is too big (deprecated atm)
 
 UIS.InputBegan:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
-        if #mhits >= 50 then
+        --[[if #mhits >= 50 then
             for k in pairs(mhits) do
                 mhits[k] = nil;
             end;
@@ -37,13 +39,35 @@ UIS.InputBegan:connect(function(i)
         print("hit inserted");
         for i,v in pairs(mhits) do
             print(i,v);
+        end;]]
+	hit = true;
+	hitpos = getmousep(i.Position.X, i.Position.Y);
+    end
+end);
+
+UIS.InputEnded:connect(function(i)
+    local itype = i.UserInputType;
+    if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
+        --[[if #mhits >= 50 then
+            for k in pairs(mhits) do
+                mhits[k] = nil;
+            end;
+            print("all hits cleared");
         end;
+        local pos = getmousep(i.Position.X, i.Position.Y);
+        table.insert(mhits, pos);
+        print("hit inserted");
+        for i,v in pairs(mhits) do
+            print(i,v);
+        end;]]
+	hit = false;
     end
 end);
 
 -- this might cause lag issues while drawing
 local mainDraw = coroutine.wrap(function()
     repeat wait();
+    if hit then table.insert(mhits, hitpos); end;
     for i,v in pairs(mhits) do
         game:GetService("Workspace").resources.RemoteEvent:FireServer(
             "FireAllClients",
