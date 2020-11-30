@@ -30,14 +30,18 @@ local hit = false;
 local hitpos;
 -- store mouse.hit cframes and remove them when table is too big
 
+local function clearallhits()
+    for k in pairs(mhits) do
+        mhits[k] = nil;
+    end;
+    print("all hits cleared");	
+end;
+
 UIS.InputBegan:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
         if #mhits >= 200 then
-            for k in pairs(mhits) do
-                mhits[k] = nil;
-            end;
-            print("all hits cleared");
+            clearallhits();
         end;
         --[[local pos = getmousep(i.Position.X, i.Position.Y);
         table.insert(mhits, pos);
@@ -45,15 +49,22 @@ UIS.InputBegan:connect(function(i)
         for i,v in pairs(mhits) do
             print(i,v);
         end;]]
+	print("mouse down");
 	hit = true;
 	hitpos = getmousep(i.Position.X, i.Position.Y);
 	table.insert(mhits, hitpos);
-    end
+    elseif itype == Enum.UserInputType.Keyboard and isrbxactive() then
+	local ik = i.KeyCode;
+	if ik == Enum.KeyCode.BackSlash and isrbxactive() then
+	    clearallhits();
+	end;
+    end;
 end);
 
 UIS.InputEnded:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
+	print("mouse up");
 	hit = false;
     end
 end);
