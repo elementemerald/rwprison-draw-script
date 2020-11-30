@@ -48,18 +48,6 @@ end);
 UIS.InputEnded:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
-        --[[if #mhits >= 50 then
-            for k in pairs(mhits) do
-                mhits[k] = nil;
-            end;
-            print("all hits cleared");
-        end;
-        local pos = getmousep(i.Position.X, i.Position.Y);
-        table.insert(mhits, pos);
-        print("hit inserted");
-        for i,v in pairs(mhits) do
-            print(i,v);
-        end;]]
 	hit = false;
     end
 end);
