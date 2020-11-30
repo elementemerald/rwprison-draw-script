@@ -55,7 +55,7 @@ end);
 
 UIS.InputChanged:connect(function(i)
     local itype = i.UserInputType;
-    if itype == Enum.UserInputType.MouseMovement and isrbxactive() then
+    if itype == Enum.UserInputType.MouseMovement and hit and isrbxactive() then
 	hitpos = getmousep(i.Position.X, i.Position.Y);
 	table.insert(mhits, hitpos);
     end;
