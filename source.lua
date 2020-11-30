@@ -28,7 +28,7 @@ local hitpos;
 UIS.InputBegan:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
-        if #mhits >= 50 then
+        if #mhits >= 200 then
             for k in pairs(mhits) do
                 mhits[k] = nil;
             end;
