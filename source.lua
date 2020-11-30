@@ -51,10 +51,10 @@ local mainDraw = coroutine.wrap(function()
             {
                 --["CFrame"] = CFrame.new(55, 0.5, -382, 0, 1, 0, 0, 0, -1, -1, 0, 0),
                 ["CFrame"] = CFrame.new(v),
-                ["BrickColor"] = BrickColor.new("Bright green"), -- Light orange brown
+                ["BrickColor"] = BrickColor.new("Bright green"),
                 ["CanCollide"] = false,
                 ["Parent"] = game:GetService("Workspace"),
-                ["Material"] = "Neon", -- CorrodedMetal
+                ["Material"] = "Neon",
                 ["Shape"] = Enum.PartType.Block,
                 ["Size"] = Vector3.new(5, 5, 5)
             }
