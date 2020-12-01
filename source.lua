@@ -4,7 +4,7 @@ elementemerald#4175
 https://www.roblox.com/games/402122991/Redwood-Prison
 ]]
 
---if shared.bsize == nil then return error("Block size for drawing has not been defined"); end;
+if shared.bsize == nil then return error("Block size for drawing has not been defined"); end;
 
 local UIS = game:GetService("UserInputService");
 local plr = game:GetService("Players").LocalPlayer;
@@ -22,9 +22,9 @@ function getmousep(X, Y)
 end
 
 mhits = {};
-local fireconfig = {};
 local hit = false;
 local hitpos;
+local fireconfig = {};
 for i,v in pairs(shared.drawconfig) do
 fireconfig[i] = v;
 end;
@@ -79,10 +79,8 @@ UIS.InputChanged:connect(function(i)
 end);
 
 -- this might cause lag issues while drawing
-local drawMain = coroutine.wrap(function()
-    while true do
-    wait();
-    if shared.enabled then
+local mainDraw = coroutine.wrap(function()
+    repeat wait();
     for i,v in pairs(mhits) do
         game:GetService("Workspace").resources.RemoteEvent:FireServer(
             "FireAllClients",
@@ -92,20 +90,22 @@ local drawMain = coroutine.wrap(function()
             {
                 --["CFrame"] = CFrame.new(55, 0.5, -382, 0, 1, 0, 0, 0, -1, -1, 0, 0),
                 ["CFrame"] = CFrame.new(v),
-                ["BrickColor"] = shared.color,
-                ["CanCollide"] = shared.collide,
+                --["BrickColor"] = BrickColor.new("Bright green"),
+		["BrickColor"] = fireconfig.color,
+                --["CanCollide"] = false,
+		["CanCollide"] = fireconfig.collide,
                 ["Parent"] = game:GetService("Workspace"),
                 ["Material"] = "Neon",
-                ["Shape"] = shared.shape,
+                --["Shape"] = Enum.PartType.Block,
+		["Shape"] = fireconfig.shape,
                 ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
             }
         );
     end;
-    end;
-    end;
+    until not shared.enabled;
 end);
 
-drawMain();
+mainDraw();
 
 game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
 Text = "{System} Loaded elementemerald's Redwood Prison Draw Script."
