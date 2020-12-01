@@ -25,7 +25,10 @@ mhits = {};
 lib = {};
 local hit = false;
 local hitpos;
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 2f9918a... Update source.lua
 -- store mouse.hit cframes and remove them when table is too big
 
 function lib.clearallhits()
@@ -89,6 +92,7 @@ while wait(0.1) do
             {
                 --["CFrame"] = CFrame.new(55, 0.5, -382, 0, 1, 0, 0, 0, -1, -1, 0, 0),
                 ["CFrame"] = CFrame.new(v),
+<<<<<<< HEAD
                 --["BrickColor"] = BrickColor.new("Bright green"),
 		["BrickColor"] = BrickColor.new(a1.flags.RED, a1.flags.GREEN, a1.flags.BLUE),
                 --["CanCollide"] = false,
@@ -98,6 +102,14 @@ while wait(0.1) do
                 --["Shape"] = Enum.PartType.Block,
 		["Shape"] = a1.flags.shape,
                 ["Size"] = Vector3.new(a1.flags.bsize, a1.flags.bsize, a1.flags.bsize)
+=======
+                ["BrickColor"] = BrickColor.new("Bright green"),
+                ["CanCollide"] = false,
+                ["Parent"] = game:GetService("Workspace"),
+                ["Material"] = "Neon",
+                ["Shape"] = Enum.PartType.Block,
+                ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
+>>>>>>> parent of 2f9918a... Update source.lua
             }
         );
     end;
