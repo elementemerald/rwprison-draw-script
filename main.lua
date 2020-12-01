@@ -1,3 +1,5 @@
+-- ui lib that i tried working on but broke the script so u couldnt draw
+
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kiwi-i/wallys-ui-fork/master/lib.lua", true))();
 lib.options.underlinecolor = "rainbow";
 getgenv().a1 = lib:CreateWindow("RP Draw Script");
