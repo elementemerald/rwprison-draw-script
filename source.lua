@@ -105,6 +105,8 @@ local drawMain = coroutine.wrap(function()
     end;
 end);
 
+drawMain();
+
 game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
 Text = "{System} Loaded elementemerald's Redwood Prison Draw Script."
 });
