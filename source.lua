@@ -22,7 +22,6 @@ function getmousep(X, Y)
 end
 
 mhits = {};
-lib = {};
 local hit = false;
 local hitpos;
 <<<<<<< HEAD
@@ -31,7 +30,7 @@ local hitpos;
 >>>>>>> parent of 2f9918a... Update source.lua
 -- store mouse.hit cframes and remove them when table is too big
 
-function lib.clearallhits()
+local function clearallhits()
     for k in pairs(mhits) do
         mhits[k] = nil;
     end;
@@ -42,7 +41,7 @@ UIS.InputBegan:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
         if #mhits >= 200 then
-            lib.clearallhits();
+            clearallhits();
         end;
         --[[local pos = getmousep(i.Position.X, i.Position.Y);
         table.insert(mhits, pos);
@@ -57,7 +56,7 @@ UIS.InputBegan:connect(function(i)
     elseif itype == Enum.UserInputType.Keyboard and isrbxactive() then
 	local ik = i.KeyCode;
 	if ik == Enum.KeyCode.BackSlash and isrbxactive() then
-	    lib.clearallhits();
+	    clearallhits();
 	end;
     end;
 end);
@@ -120,5 +119,3 @@ end);
 game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
 Text = "{System} Loaded elementemerald's Redwood Prison Draw Script."
 });
-
-return lib;
