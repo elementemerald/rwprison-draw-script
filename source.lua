@@ -80,6 +80,7 @@ end);
 
 -- this might cause lag issues while drawing
 local drawMain = coroutine.wrap(function()
+    while true do
     wait();
     if shared.enabled then
     for i,v in pairs(mhits) do
@@ -99,6 +100,7 @@ local drawMain = coroutine.wrap(function()
                 ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
             }
         );
+    end;
     end;
     end;
 end);
