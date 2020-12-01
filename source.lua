@@ -25,10 +25,6 @@ mhits = {};
 lib = {};
 local hit = false;
 local hitpos;
-local fireconfig = {};
-for i,v in pairs(shared.drawconfig) do
-fireconfig[i] = v;
-end;
 
 -- store mouse.hit cframes and remove them when table is too big
 
@@ -80,8 +76,10 @@ UIS.InputChanged:connect(function(i)
 end);
 
 -- this might cause lag issues while drawing
-local mainDraw = coroutine.wrap(function()
-    repeat wait();
+spawn(function()
+while wait(0.1) do
+    -- a1 is the ui window
+    if a1.flags.drawEnabled then
     for i,v in pairs(mhits) do
         game:GetService("Workspace").resources.RemoteEvent:FireServer(
             "FireAllClients",
@@ -92,21 +90,20 @@ local mainDraw = coroutine.wrap(function()
                 --["CFrame"] = CFrame.new(55, 0.5, -382, 0, 1, 0, 0, 0, -1, -1, 0, 0),
                 ["CFrame"] = CFrame.new(v),
                 --["BrickColor"] = BrickColor.new("Bright green"),
-		["BrickColor"] = fireconfig.color,
+		["BrickColor"] = BrickColor.new(a1.flags.RED, a1.flags.GREEN, a1.flags.BLUE),
                 --["CanCollide"] = false,
-		["CanCollide"] = fireconfig.collide,
+		["CanCollide"] = a1.flags.collide,
                 ["Parent"] = game:GetService("Workspace"),
-                ["Material"] = "Neon",
+                ["Material"] = a1.flags.material,
                 --["Shape"] = Enum.PartType.Block,
-		["Shape"] = fireconfig.shape,
-                ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
+		["Shape"] = a1.flags.shape,
+                ["Size"] = Vector3.new(a1.flags.bsize, a1.flags.bsize, a1.flags.bsize)
             }
         );
     end;
-    until not shared.enabled;
+    end;
+end;
 end);
-
-mainDraw();
 
 game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
 Text = "{System} Loaded elementemerald's Redwood Prison Draw Script."
