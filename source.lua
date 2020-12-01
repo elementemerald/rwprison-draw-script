@@ -98,7 +98,7 @@ local mainDraw = coroutine.wrap(function()
                 ["Material"] = "Neon",
                 --["Shape"] = Enum.PartType.Block,
 		["Shape"] = fireconfig.shape,
-                ["Size"] = Vector3.new(shared.bsize, shared.bsize, shared.bsize)
+                ["Size"] = Vector3.new(shared.bsize.x, shared.bsize.y, shared.bsize.z)
             }
         );
     end;
