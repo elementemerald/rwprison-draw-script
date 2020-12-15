@@ -4,7 +4,7 @@ elementemerald#4175
 https://www.roblox.com/games/402122991/Redwood-Prison
 ]]
 
-if shared.bsize == nil then return error("Block size for drawing has not been defined"); end;
+if type(shared.bsize) == "nil" then return error("Block size for drawing has not been defined"); end;
 
 local UIS = game:GetService("UserInputService");
 local plr = game:GetService("Players").LocalPlayer;
