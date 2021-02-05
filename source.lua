@@ -82,7 +82,7 @@ end);
 local mainDraw = coroutine.wrap(function()
     repeat wait();
     for i,v in pairs(mhits) do
-        game:GetService("Workspace").resources.RemoteEvent:FireServer(
+        workspace.resources:FindFirstChildWhichIsA("RemoteEvent"):FireServer(
             "FireAllClients",
             "drawLaser",
             Vector3.new(55, 1.5, -382),
