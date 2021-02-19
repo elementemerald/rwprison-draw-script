@@ -34,16 +34,16 @@ local function clearallhits()
     end;
     for i,v in pairs(clientParts:GetChildren()) do
     	if v:IsA("Part") then
-    		v:Destroy();
-		end;
+    	    v:Destroy();
 	end;
+    end;
     print("all hits cleared");	
 end;
 
 UIS.InputBegan:connect(function(i)
     local itype = i.UserInputType;
     if itype == Enum.UserInputType.MouseButton1 and isrbxactive() then
-        if #mhits >= 200 then
+        if #mhits >= 75 then
             clearallhits();
         end;
 	print("mouse down");
@@ -104,11 +104,11 @@ local mainDraw = coroutine.wrap(function()
             Vector3.new(55, 2, -382),
             {
                 ["CFrame"] = CFrame.new(v),
-				["BrickColor"] = fireconfig.color,
-				["CanCollide"] = fireconfig.collide,
+		["BrickColor"] = fireconfig.color,
+		["CanCollide"] = fireconfig.collide,
                 ["Parent"] = game:GetService("Workspace"),
                 ["Material"] = "Neon",
-				["Shape"] = fireconfig.shape,
+		["Shape"] = fireconfig.shape,
                 ["Size"] = Vector3.new(shared.bsize.x, shared.bsize.y, shared.bsize.z)
             }
         );
