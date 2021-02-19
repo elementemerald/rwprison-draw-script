@@ -94,7 +94,7 @@ UIS.InputChanged:connect(function(i)
     end;
 end);
 
-local mainDraw = coroutine.wrap(function()
+coroutine.wrap(function()
     repeat wait();
     for i,v in pairs(mhits) do
         game:GetService("Workspace").resources.RemoteEvent:FireServer(
@@ -114,9 +114,7 @@ local mainDraw = coroutine.wrap(function()
         );
     end;
     until not shared.enabled;
-end);
-
-mainDraw();
+end)();
 
 game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
 Text = "{System} Loaded elementemerald's Redwood Prison Draw Script."
