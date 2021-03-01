@@ -23,6 +23,7 @@ local fireconfig = {};
 local clientParts = Instance.new("Folder");
 clientParts.Name = "ClientPartsDraw";
 clientParts.Parent = workspace;
+Mouse.TargetFilter = clientParts;
 
 for i,v in pairs(shared.drawconfig) do
 fireconfig[i] = v;
